@@ -322,3 +322,15 @@ Retrieve execution logs + final state.
    * API Tester
    * Graph Engine
 
+#  Screenshots of the work
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0fb820bb-417c-4784-99af-9d3a3b8ff10b" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ba74d3d4-c56e-4321-b91b-ec8758f316ab" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ebaa47da-32d6-49d4-819c-1786123b5a63" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/bf12ce3e-b2f4-4ab9-bd6e-0e240d8b60b2" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f8dd2619-0c9a-4379-bc10-bfc2d662f167" />
+
+
+
+
+
