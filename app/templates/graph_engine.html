@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Graph Engine Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #F4E9FF
+;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .box {
+            background: white;
+            width: 65%;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 0px 12px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #222;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .tag {
+            background: #4775ff;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 14px;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        pre {
+            background: #f4f4f4;
+            padding: 12px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        a {
+            margin-top: 20px;
+            display: inline-block;
+            color: #5a2d82;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+<div class="box">
+    <h2>Graph Engine Structure</h2>
+
+    <!-- Nodes -->
+    <div class="section-title"><span class="tag">1</span> Nodes</div>
+    <ul>
+        {% for node in nodes %}
+            <li>{{ node }}</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Edges -->
+    <div class="section-title"><span class="tag">2</span> Edges (Execution Order)</div>
+    <pre>{{ edges }}</pre>
+
+    <!-- Execution Flow -->
+    <div class="section-title"><span class="tag">3</span> Execution Flow</div>
+    <p>This shows the actual routing defined by edges:</p>
+
+    <pre>
+{% for src, dst in edges.items() %}
+{{ src }} --> {{ dst }}
+{% endfor %}
+    </pre>
+
+    <a href="/">← Go Back</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Endpoint Tester</title>
+    <style>
+        body { 
+            font-family: Arial; 
+            background: #fff7e6; 
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 40px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        button {
+            padding: 10px 18px;
+            background: #ff9900;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        pre {
+            background: #fafafa;
+            padding: 15px;
+            border-radius: 10px;
+            white-space: pre-wrap;
+        }
+    </style>
+
+    <script>
+        async function testCreateGraph() {
+            const req = {
+                "nodes": {
+                    "extract_functions": true,
+                    "check_complexity": true,
+                    "detect_issues": true,
+                    "suggest_improvements": true
+                },
+                "edges": {
+                    "extract_functions": "check_complexity",
+                    "check_complexity": "detect_issues",
+                    "detect_issues": "suggest_improvements"
+                }
+            };
+
+            const res = await fetch("/graph/create", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(req)
+            });
+
+            const data = await res.json();
+            document.getElementById("output").innerText = JSON.stringify(data, null, 4);
+            window.graph_id = data.graph_id;
+        }
+
+        async function testRunGraph() {
+            if (!window.graph_id) {
+                alert("Please run /graph/create first.");
+                return;
+            }
+
+            const req = {
+                "graph_id": window.graph_id,
+                "state": {
+                    "code": "def a(): pass\ndef b(): pass",
+                    "threshold": 5
+                }
+            };
+
+            const res = await fetch("/graph/run", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(req)
+            });
+
+            const data = await res.json();
+            document.getElementById("output").innerText = JSON.stringify(data, null, 4);
+            window.run_id = data.run_id;
+        }
+
+        async function testGetState() {
+            if (!window.run_id) {
+                alert("Please run /graph/run first.");
+                return;
+            }
+
+            const res = await fetch(`/graph/state/${window.run_id}`);
+            const data = await res.json();
+            document.getElementById("output").innerText = JSON.stringify(data, null, 4);
+        }
+    </script>
+
+</head>
+<body>
+
+<div class="container">
+    <h1>API Endpoint Tester</h1>
+
+    <button onclick="testCreateGraph()">Test /graph/create</button>
+    <button onclick="testRunGraph()">Test /graph/run</button>
+    <button onclick="testGetState()">Test /graph/state/{run_id}</button>
+
+    <h3>Output:</h3>
+    <pre id="output">Click a button to run</pre>
+
+    <p><a href="/" style="color:#6600cc;">← Back to Home</a></p>
+</div>
+
+</body>
+</html>

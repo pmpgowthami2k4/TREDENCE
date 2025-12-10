@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Workflow Engine Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #b66d8d;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 60%;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 10px;
+            color: #333;
+        }
+
+        .btn-list {
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            padding: 12px 18px;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            transition: 0.2s ease-in-out;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+            transform: scale(1.03);
+        }
+
+        .blue { background: #007bff; }
+        .green { background: #28a745; }
+        .orange { background: #ff9800; }
+        .purple { background: #6f42c1; }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to the Workflow Engine Demo</h1>
+
+        <h2 style="text-align:center;">Available Sections</h2>
+
+        <div class="btn-list">
+            <a class="btn blue" href="/tools">🔧 View Tool Registry</a>
+            <a class="btn green" href="/workflow">📄 Code Review Workflow</a>
+            <a class="btn orange" href="/api">🛰️ Test API Endpoints</a>
+            <a class="btn purple" href="/graph-engine">🔗 View Graph Engine</a>
+        </div>
+    </div>
+</body>
+</html>
